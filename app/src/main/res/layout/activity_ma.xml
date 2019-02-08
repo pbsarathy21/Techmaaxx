@@ -1,0 +1,1200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_43sdp"
+        android:padding="@dimen/_8sdp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:src="@mipmap/nav_120" />
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextviewTitle
+            android:id="@+id/profile_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/menu"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="@string/techmaaxx"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"
+            tools:ignore="RelativeOverlap" />
+
+        <ImageView
+            android:id="@+id/bt_disconnected"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:src="@drawable/ic_bluetooth_disabled_button"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bt_connected"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:visibility="gone"
+            android:src="@drawable/ic_bluetooth_connected"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/use"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:hint="Name / Seat No"
+                        android:textColor="@color/ashh"
+                        android:textColorHint="@color/ashh">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/edit_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:focusableInTouchMode="true"
+                            android:inputType="textCapSentences"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:paddingTop="@dimen/_7sdp"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/user" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_below="@+id/text_name"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:background="@mipmap/line" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:hint="Mobile"
+                        android:textColor="@color/ashh"
+                        android:textColorHint="@color/ashh">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/edit_mobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:focusableInTouchMode="true"
+
+                            android:inputType="number"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:paddingTop="@dimen/_7sdp"
+                            android:singleLine="true"
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/phone" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_below="@+id/text_mobile"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:background="@mipmap/line" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_fleet_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:hint="Fleet No"
+                        android:textColor="@color/ashh"
+                        android:textColorHint="@color/ashh">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/edit_fleet_no"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:focusableInTouchMode="true"
+
+                            android:inputType="textCapSentences"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:paddingTop="@dimen/_7sdp"
+                            android:singleLine="true"
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/fleet" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_below="@+id/text_fleet_no"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:background="@mipmap/line" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/linear_condition"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                                android:id="@+id/text_orgin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_17sdp"
+                                android:layout_marginRight="@dimen/_3sdp"
+                                android:gravity="left|center"
+                                android:text="Select your Orgin"
+                                android:textColor="@color/ashh"
+                                android:textSize="@dimen/_11sdp" />
+
+                        </LinearLayout>
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:id="@+id/orgin_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_27sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:gravity="left|center"
+                            android:text="Orgin"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <!--  <LinearLayout
+                              android:id="@+id/lin"
+                              android:layout_width="match_parent"
+                              android:layout_height="@dimen/_30sdp"
+                              android:layout_gravity="center"
+                              android:layout_marginLeft="@dimen/_4sdp"
+                              android:layout_marginRight="@dimen/_20sdp"
+                              android:layout_weight="0.5"
+                              android:orientation="vertical">
+
+                              <Spinner
+                                  android:id="@+id/spinner_orgin"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="@dimen/_30sdp"
+                                  android:gravity="left|center"
+                                  android:popupBackground="@color/gray_lite"
+                                  android:textColor="@color/black"
+                                  android:textSize="@dimen/_13sdp" />
+
+
+                          </LinearLayout>
+      -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:background="@mipmap/line" />
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/orgin" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/linear_room"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                                android:id="@+id/text_destination"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_15sdp"
+                                android:layout_marginRight="@dimen/_3sdp"
+                                android:gravity="left|center"
+                                android:text="Select your Destination"
+                                android:textColor="@color/ashh"
+                                android:textSize="@dimen/_11sdp" />
+
+                        </LinearLayout>
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:id="@+id/Destination_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_27sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:gravity="left|center"
+                            android:text="Destination"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <!-- <LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/_30sdp"
+                             android:layout_gravity="center"
+                             android:layout_marginLeft="@dimen/_4sdp"
+                             android:layout_marginRight="@dimen/_20sdp"
+                             android:layout_weight="0.5"
+                             android:orientation="vertical">
+
+                             <Spinner
+                                 android:id="@+id/spinner_destination"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="@dimen/_30sdp"
+                                 android:gravity="left|center"
+                                 android:popupBackground="@color/gray_lite"
+                                 android:textColor="@color/black"
+                                 android:textSize="@dimen/_13sdp" />
+
+
+                         </LinearLayout>-->
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:background="@mipmap/line" />
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/destination" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linear_l_w"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/box_lite"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewTitle
+                        android:id="@+id/text_w"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="WEIGHABLE"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_w"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/box"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewTitle
+                        android:id="@+id/text_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="WEIGHABLE"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_l_c"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/box_lite"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewTitle
+                        android:id="@+id/text_countable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/countable"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp" />
+                </LinearLayout>
+
+
+
+                <!--Invisible Part Starts here...-->
+
+
+
+                <LinearLayout
+                    android:id="@+id/linear_c"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/box"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewTitle
+                        android:id="@+id/text_co"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/countable"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linear_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/card_view"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/box"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/total_weight"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:weightSum="3"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="1.2"
+                        android:background="@drawable/curve_box"
+                        android:gravity="center"
+                        android:visibility="visible">
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/text_box"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp"
+                            tools:ignore="HardcodedText" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="0.6"
+                        android:background="@drawable/curve_box"
+                        android:gravity="center"
+                        android:visibility="visible">
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/button_weight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:text="GET"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="1.2"
+                        android:background="@drawable/curve_box"
+                        android:gravity="center"
+                        android:visibility="visible">
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/text_p"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:text="000.000"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_below="@+id/text_name"
+                    android:layout_marginBottom="@dimen/_2sdp"
+
+                    android:background="@mipmap/line" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|right"
+                        android:text="Total Amount:"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_16sdp" />
+
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                        android:id="@+id/text_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_16sdp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linear_cou"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:id="@+id/linear_cat"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/curve_box"
+                        android:gravity="center"
+                        android:visibility="visible">
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:id="@+id/text_cat"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:text="Category"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linear_p"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/curve_box"
+                        android:gravity="center"
+                        android:visibility="visible">
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:id="@+id/text_prod"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:text="Product"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_weight="1.2"
+                        android:background="@drawable/curve_box"
+                        android:gravity="center"
+                        android:visibility="visible">
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/text_b"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_weight="1.1"
+                        android:background="@drawable/curve_box"
+                        android:gravity="center"
+                        android:visibility="visible">
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:id="@+id/text_prize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:focusableInTouchMode="true"
+
+                            android:gravity="center"
+
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linear_s"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_15sdp"
+                    android:background="@drawable/box_lite"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewTitle
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Add Product"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linear_relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Category"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Product"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Box"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Prize"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/Count_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/white"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    </android.support.v7.widget.RecyclerView>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:background="@mipmap/line" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="center|right"
+                            android:text="Total Amount:"
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/_16sdp" />
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                            android:id="@+id/text_total_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/_16sdp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!--Payment modification starts-->
+
+
+
+            <LinearLayout
+                android:id="@+id/linear_new_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                    android:id="@+id/payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_27sdp"
+                    android:layout_marginRight="@dimen/_3sdp"
+                    android:gravity="left|center"
+                    android:text="Payment"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <RadioGroup
+                    android:id="@+id/payment_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    >
+
+                    <RadioButton
+                        android:id="@+id/cash_radio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:text="CASH"
+                        android:textSize="@dimen/_14sdp"
+                        android:checked="true"
+                        android:textColor="#FA7A13"
+                        android:textStyle="bold"/>
+
+                    <RadioButton
+                        android:id="@+id/mobile_radio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="MOBILE MONEY"
+                        android:layout_marginLeft="1.8dp"
+                        android:textSize="@dimen/_14sdp"
+                        android:textColor="#FA7A13"
+                        android:textStyle="bold"/>
+
+                </RadioGroup>
+
+                <LinearLayout
+                    android:id="@+id/mobile_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_18sdp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <RadioGroup
+                            android:id="@+id/mno_radio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            >
+
+                            <RadioButton
+                                android:id="@+id/mtn_radio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleX="0.8"
+                                android:scaleY="0.8"
+                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:text="MTN"
+                                android:textSize="@dimen/_14sdp"
+                                android:checked="true"
+                                android:textColor="#FA7A13"
+                                android:textStyle="bold"/>
+
+                            <RadioButton
+                                android:id="@+id/airtel_radio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleX="0.8"
+                                android:scaleY="0.8"
+                                android:text="Airtel"
+                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:textSize="@dimen/_14sdp"
+                                android:textColor="#FA7A13"
+                                android:textStyle="bold"/>
+
+                            <RadioButton
+                                android:id="@+id/tigo_radio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleX="0.8"
+                                android:scaleY="0.8"
+                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:text="Tigo"
+                                android:textSize="@dimen/_14sdp"
+                                android:textColor="#FA7A13"
+                                android:textStyle="bold"/>
+
+                            <RadioButton
+                                android:id="@+id/vodafone_radio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleX="0.8"
+                                android:scaleY="0.8"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:text="Vodafone"
+                                android:textSize="@dimen/_14sdp"
+                                android:textColor="#FA7A13"
+                                android:textStyle="bold"/>
+
+                        </RadioGroup>
+
+
+
+                    </LinearLayout>
+
+                  <Button
+                      android:id="@+id/request_button"
+                      android:layout_width="@dimen/_130sdp"
+                      android:layout_height="@dimen/_20sdp"
+                      android:background="@drawable/calender_card"
+                      android:textColor="@android:color/white"
+                      android:layout_gravity="center|right"
+
+                      android:layout_marginLeft="@dimen/_8sdp"
+                      android:text="Request Payment"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/zee_pay_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_27sdp"
+                        android:layout_marginRight="@dimen/_3sdp"
+                        android:gravity="left|center"
+                        android:text="Zeepay ID : "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                        android:id="@+id/zee_pay_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_27sdp"
+                        android:gravity="left|center"
+                        android:text="0000"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <Button
+                        android:id="@+id/status_button"
+                        android:layout_width="@dimen/_130sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/calender_card"
+                        android:textColor="@android:color/white"
+                        android:layout_gravity="bottom|right"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:text="Payment Status"/>
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/linear_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_35sdp"
+                    android:background="@drawable/calender_card"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:enabled="false"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:text="SUBMIT"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16sdp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/pair_layout"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_centerInParent="true"
+        android:background="@android:color/white"
+        android:visibility="gone"
+        android:padding="8dp">
+
+        <RelativeLayout
+            android:id="@+id/dialog_head"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@color/colorPrimary">
+
+            <com.android.ninos.techmaaxx.Utils.CustomTextviewTitle
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Devices"
+                android:layout_centerInParent="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_24sdp"/>
+
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/list_devices1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialog_head"
+            android:layout_marginTop="@dimen/_8sdp">
+
+
+        </ListView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

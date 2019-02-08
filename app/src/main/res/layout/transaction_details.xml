@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_16sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_20sdp">
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+            android:id="@+id/transaction_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "Transaction Details"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_18sdp" />
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+            android:id="@+id/sender_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/transaction_head"
+            android:text = "Sender"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:textSize="@dimen/_16sdp" />
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+            android:id="@+id/align"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/sender_key"
+            android:layout_alignBottom="@+id/sender_key"
+            android:layout_marginLeft="@dimen/_24sdp"
+            android:text = ":"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:textSize="@dimen/_16sdp" />
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+            android:id="@+id/sender_value"
+            android:layout_toRightOf="@+id/align"
+            android:layout_marginLeft="@dimen/_24sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/transaction_head"
+            android:layout_marginRight="@dimen/_36sdp"
+            android:text = "Sender Value"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:textSize="@dimen/_16sdp" />
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+            android:id="@+id/amount_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sender_key"
+            android:layout_alignStart="@+id/sender_key"
+            android:text = "Amount"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textSize="@dimen/_16sdp" />
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/sender_key"
+            android:layout_alignBottom="@+id/amount_key"
+            android:layout_alignStart="@+id/align"
+            android:text = ":"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:textSize="@dimen/_16sdp" />
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+            android:id="@+id/amount_value"
+            android:layout_toRightOf="@+id/align"
+            android:layout_alignBottom="@+id/amount_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/sender_value"
+            android:layout_marginRight="@dimen/_36sdp"
+            android:text = "$40"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:textSize="@dimen/_16sdp" />
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+            android:id="@+id/status_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/sender_key"
+            android:layout_below="@+id/amount_key"
+            android:text = "Status"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textSize="@dimen/_16sdp" />
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/sender_key"
+            android:layout_alignBottom="@+id/status_key"
+            android:layout_alignStart="@+id/align"
+            android:text = ":"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:textSize="@dimen/_16sdp" />
+
+        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+            android:id="@+id/status_value"
+            android:layout_toRightOf="@+id/align"
+            android:layout_alignBottom="@+id/status_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/sender_value"
+            android:layout_marginRight="@dimen/_36sdp"
+            android:text = "Success"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:textSize="@dimen/_16sdp" />
+
+        <Button
+        android:id="@+id/accept_button"
+        android:layout_below="@+id/status_key"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/_36sdp"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:background="@drawable/calender_card"
+            android:enabled="false"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:text="Accept"/>
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_below="@+id/status_key"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/calender_card"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:text="Cancel"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

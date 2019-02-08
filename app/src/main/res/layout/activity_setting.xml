@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:src="@mipmap/techmax" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/use"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120sdp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:id="@+id/linear_Logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_35sdp"
+                        android:layout_marginTop="@dimen/_35sdp"
+                        android:background="@drawable/calender_card"
+                        android:gravity="center">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+                            android:id="@+id/logo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:text="Upload logo"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_16sdp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/cl_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:src="@drawable/icon64"
+                            android:visibility="gone" />
+
+
+                        <ImageView
+                            android:id="@+id/img_logo"
+                            android:layout_width="@dimen/_90sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/_15sdp"
+                            android:gravity="center|center_horizontal"
+                            android:scaleType="fitXY" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_company"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:hint="Company Name"
+                        android:textColor="@color/ashh"
+                        android:textColorHint="@color/ashh">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/edit_company"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:drawableRight="@mipmap/user"
+                            android:inputType="textCapSentences"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:paddingTop="@dimen/_7sdp"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:background="@mipmap/line" />
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_add1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:hint="Address 1"
+                        android:textColor="@color/ashh"
+                        android:textColorHint="@color/ashh">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/edit_address1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:drawableRight="@mipmap/user"
+                            android:inputType="textCapSentences"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:paddingTop="@dimen/_7sdp"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:background="@mipmap/line" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_address2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:hint="Address 2"
+                        android:textColor="@color/ashh"
+                        android:textColorHint="@color/ashh">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/edit_address2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:drawableRight="@mipmap/user"
+                            android:inputType="textCapSentences"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:paddingTop="@dimen/_7sdp"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:background="@mipmap/line" />
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_com_do"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:hint="Company Domain"
+                        android:textColor="@color/ashh"
+                        android:textColorHint="@color/ashh">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/edit_com_do"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:drawableRight="@mipmap/user"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:paddingTop="@dimen/_7sdp"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:id="@+id/ak"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:background="@mipmap/line" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear_condition"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+
+                                <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                                    android:id="@+id/text_currency"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_17sdp"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:gravity="left|center"
+                                    android:text="Select your Currency Symbol"
+                                    android:textColor="@color/ashh"
+                                    android:textSize="@dimen/_11sdp" />
+
+                            </LinearLayout>
+
+
+                            <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
+                                android:id="@+id/currency_value"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_27sdp"
+                                android:layout_marginRight="@dimen/_3sdp"
+                                android:gravity="left|center"
+                                android:text="Currency Symbol"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp" />
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:layout_marginBottom="@dimen/_2sdp"
+                                android:background="@mipmap/line" />
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextviewTitle
+                        android:id="@+id/text_f"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="FOOTER"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/_14sdp"
+                        android:visibility="gone" />
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_power"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:hint="Powered By"
+                        android:textColor="@color/ashh"
+                        android:textColorHint="@color/ashh"
+                        android:visibility="gone">
+
+
+                        <com.android.ninos.techmaaxx.Utils.CustomEditTextviewRegular
+                            android:id="@+id/edit_power"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:inputType="textCapSentences"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:paddingTop="@dimen/_7sdp"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:id="@+id/li"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:background="@mipmap/line"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/linear_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_35sdp"
+                    android:background="@drawable/calender_card"
+                    android:gravity="center">
+
+
+                    <com.android.ninos.techmaaxx.Utils.CustomTextViewBold
+                        android:id="@+id/save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:text="SAVE"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16sdp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
