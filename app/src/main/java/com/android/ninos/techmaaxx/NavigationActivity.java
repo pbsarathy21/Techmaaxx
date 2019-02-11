@@ -866,6 +866,8 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
             boolean status = preferences.getBoolean("status", false);
             SharedPreferences.Editor editor = preferences.edit();
 
+            databaseHelper.deleteAllRecord();
+
             if (status)
             {
 
