@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
 import android.os.SystemClock;
@@ -142,9 +143,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
     protected void onStart() {
 
         Consts.Domain_url = session.getCompany_domain();
-
-        checkBTAvailability();
-        enableBT();
         super.onStart();
     }
 
@@ -169,6 +167,8 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
     RadioButton cash_radio, mobile_radio;
 
     Button request_button, status_button;
+
+    CustomEditTextviewRegular button_weight;
 
     //BT Modification ends
 
@@ -320,6 +320,7 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
     boolean wei = false, cou = false;
 
+    @SuppressLint("ApplySharedPref")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -359,6 +360,8 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         zee_pay_id = findViewById(R.id.zee_pay_id);
         zee_pay_text = findViewById(R.id.zee_pay_text);
 
+        button_weight = findViewById(R.id.button_weight);
+
 
         //BT Modification ends
 
@@ -374,12 +377,19 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         session = new Session(this);
 
 
-        request_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bluetoothManager.close();
+        request_button.setOnClickListener(v -> {
+
+            if (text_p.getText().toString().equalsIgnoreCase("000.000"))
+            {
+                vib.vibrate(500);
+                Toast.makeText(activity, "Weight data is zero", Toast.LENGTH_SHORT).show();
+            } else
+            {
                 requestPayment();
             }
+
+            //bluetoothManager.close();
+
         });
 
      /*   testPrint.setOnClickListener(new View.OnClickListener() {
@@ -403,14 +413,42 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                 }
             }
         });
+
 */
 
-        status_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startPaymentVerification();
-            }
-        });
+     button_weight.setOnClickListener(view -> {
+
+         if (button_weight.getText().toString().equalsIgnoreCase("update"))
+         {
+             bluetoothManager.close();
+         }
+
+         boolean BT_available = checkBTAvailability();
+
+         if (BT_available) {
+             enableBT();
+         }
+
+         if (!bluetoothAdapter.isEnabled())
+         {
+             enableBT();
+         }
+         else
+         {
+             executeBTOperations();
+         }
+
+       /*  new Handler().postDelayed(() -> {
+             if (!bluetoothAdapter.isEnabled())
+             {
+                 executeBTOperations();
+             }
+         }, 3000);*/
+     });
+
+
+
+        status_button.setOnClickListener(v -> startPaymentVerification());
 
         initViews();
 
@@ -432,76 +470,60 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
 
         }
-        orgin_value.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        orgin_value.setOnClickListener(v -> {
 
-                if (linear_new_submit.getVisibility() == View.VISIBLE)
-                {
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(NavigationActivity.this);
-                    builder.setTitle("Warning");
-                    builder.setMessage("Your current progress will be resetted");
-                    builder.setIcon(android.R.drawable.ic_dialog_alert);
+            if (linear_new_submit.getVisibility() == View.VISIBLE)
+            {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(NavigationActivity.this);
+                builder.setTitle("Warning");
+                builder.setMessage("Your current progress will be resetted");
+                builder.setIcon(android.R.drawable.ic_dialog_alert);
 
-                    builder.setPositiveButton("Edit Anyway", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Edit Anyway", (dialog, which) -> Orgin_Dialog());
 
-                        public void onClick(DialogInterface dialog, int which) {
-                            Orgin_Dialog();
-                        }
-                    });
-
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-                    builder.setOnCancelListener(null);
-                    builder.show();
-                }
-
-                else
-                {
-                    Orgin_Dialog();
-                }
-
+                builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+                builder.setOnCancelListener(null);
+                builder.show();
             }
+
+            else
+            {
+                Orgin_Dialog();
+            }
+
         });
 
-        Destination_value.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Destination_value.setOnClickListener(v -> {
 
-                if (linear_new_submit.getVisibility() == View.VISIBLE)
-                {
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(NavigationActivity.this);
-                    builder.setTitle("Warning");
-                    builder.setMessage("Your current progress will be resetted");
-                    builder.setIcon(android.R.drawable.ic_dialog_alert);
+            if (linear_new_submit.getVisibility() == View.VISIBLE)
+            {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(NavigationActivity.this);
+                builder.setTitle("Warning");
+                builder.setMessage("Your current progress will be resetted");
+                builder.setIcon(android.R.drawable.ic_dialog_alert);
 
-                    builder.setPositiveButton("Edit Anyway", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Edit Anyway", new DialogInterface.OnClickListener() {
 
-                        public void onClick(DialogInterface dialog, int which) {
-                            Get_Destination();
-                        }
-                    });
+                    public void onClick(DialogInterface dialog, int which) {
+                        Get_Destination();
+                    }
+                });
 
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-                    builder.setOnCancelListener(null);
-                    builder.show();
-                }
-
-                else
-                {
-                    Get_Destination();
-                }
-
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.setOnCancelListener(null);
+                builder.show();
             }
+
+            else
+            {
+                Get_Destination();
+            }
+
         });
 
 
@@ -550,21 +572,9 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
         }
 
-        text_cat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Category_Dialog();
-            }
-        });
+        text_cat.setOnClickListener(v -> Category_Dialog());
 
-        text_prod.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Get_Product();
-
-            }
-        });
+        text_prod.setOnClickListener(v -> Get_Product());
 
 
         //NAVIGATION DRAWER
@@ -595,134 +605,99 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        menu.setOnClickListener(v -> {
 
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                } else {
-                    drawer.openDrawer(GravityCompat.START);
-                }
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+                drawer.openDrawer(GravityCompat.START);
             }
         });
 
-        bt_connected.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getPairedDevices();
+        bt_connected.setOnClickListener(v -> getPairedDevices());
+
+        linear_l_w.setOnClickListener(v -> {
+
+            Consts.Method = "weighable";
+
+
+            Name = edit_name.getText().toString();
+            Mobile = edit_mobile.getText().toString();
+            Fleet = edit_fleet_no.getText().toString();
+
+            SharedPreferences preferences = getSharedPreferences("customer", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("name", Name);
+            editor.putString("msidn", Mobile);
+            editor.commit();
+
+
+            if (!validation.isEmpty(Name)) {
+                name = true;
+                edit_name.setError(null);
+
+            } else {
+                name = false;
+                edit_name.setError("Enter Your Name!");
+                edit_name.setAnimation(animShake);
+                edit_name.startAnimation(animShake);
+                vib.vibrate(120);
             }
-        });
-
-        linear_l_w.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Consts.Method = "weighable";
 
 
-                Name = edit_name.getText().toString();
-                Mobile = edit_mobile.getText().toString();
-                Fleet = edit_fleet_no.getText().toString();
+            if (validation.isValidPassword(Mobile)) {
 
-                SharedPreferences preferences = getSharedPreferences("customer", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("name", Name);
-                editor.putString("msidn", Mobile);
-                editor.commit();
+                mobile = true;
+                text_mobile.setError(null);
+
+            } else {
+                mobile = false;
+                text_mobile.setError("Enter Valid  Mobile Number!");
+                text_mobile.setAnimation(animShake);
+                text_mobile.startAnimation(animShake);
+                vib.vibrate(120);
+            }
+
+            if (!validation.isEmpty(Fleet)) {
+                fleet = true;
+                text_fleet_no.setError(null);
+
+            } else {
+                fleet = false;
+                text_fleet_no.setError("Enter Your Fleet No!");
+                text_fleet_no.setAnimation(animShake);
+                text_fleet_no.startAnimation(animShake);
+                vib.vibrate(120);
+            }
 
 
-                if (!validation.isEmpty(Name)) {
-                    name = true;
-                    edit_name.setError(null);
+            if (name && mobile && fleet) {
+
+
+                if (!session.getOrgin().equalsIgnoreCase("") && !session.getDestination().equalsIgnoreCase("")) {
+
+                    linear_l_w.setVisibility(View.GONE);
+                    linear_c.setVisibility(View.GONE);
+                    linear_w.setVisibility(View.VISIBLE);
+                    linear_l_c.setVisibility(View.VISIBLE);
+                    linear_weight.setVisibility(View.VISIBLE);
+                  //  linear_submit.setVisibility(View.VISIBLE);
+                    linear_new_submit.setVisibility(View.VISIBLE);
+                    linear_cou.setVisibility(View.GONE);
+                    Get_Weight_Prize();
+
+                    Consts.Method = "weighable";
+
 
                 } else {
-                    name = false;
-                    edit_name.setError("Enter Your Name!");
-                    edit_name.setAnimation(animShake);
-                    edit_name.startAnimation(animShake);
-                    vib.vibrate(120);
+
+                    Toast.makeText(NavigationActivity.this, "Select the Orgin ,Destination", Toast.LENGTH_SHORT).show();
                 }
-
-
-                if (validation.isValidPassword(Mobile)) {
-
-                    mobile = true;
-                    text_mobile.setError(null);
-
-                } else {
-                    mobile = false;
-                    text_mobile.setError("Enter Valid  Mobile Number!");
-                    text_mobile.setAnimation(animShake);
-                    text_mobile.startAnimation(animShake);
-                    vib.vibrate(120);
-                }
-
-                if (!validation.isEmpty(Fleet)) {
-                    fleet = true;
-                    text_fleet_no.setError(null);
-
-                } else {
-                    fleet = false;
-                    text_fleet_no.setError("Enter Your Fleet No!");
-                    text_fleet_no.setAnimation(animShake);
-                    text_fleet_no.startAnimation(animShake);
-                    vib.vibrate(120);
-                }
-
-
-                if (name && mobile && fleet) {
-
-
-                    if (!session.getOrgin().equalsIgnoreCase("") && !session.getDestination().equalsIgnoreCase("")) {
-
-                        linear_l_w.setVisibility(View.GONE);
-                        linear_c.setVisibility(View.GONE);
-                        linear_w.setVisibility(View.VISIBLE);
-                        linear_l_c.setVisibility(View.VISIBLE);
-                        linear_weight.setVisibility(View.VISIBLE);
-                      //  linear_submit.setVisibility(View.VISIBLE);
-                        linear_new_submit.setVisibility(View.VISIBLE);
-                        linear_cou.setVisibility(View.GONE);
-                        Get_Weight_Prize();
-
-                        Consts.Method = "weighable";
-
-
-                    } else {
-
-                        Toast.makeText(NavigationActivity.this, "Select the Orgin ,Destination", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-
             }
+
+
         });
 
-        text_p.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressDialog.show();
-                checkBTAvailability();
-                enableBT();
-                boolean pair = checkDeviceConnected();
-
-                if (pair)
-                {
-                    /*SharedPreferences preferences1 = getSharedPreferences("BLUETOOTH", MODE_PRIVATE);
-                    String mac_ad = preferences1.getString("MAC_ADDRESS", "SOME_TEXT");
-                    connectDevice(mac_ad);*/
-
-                    String mac_ad = session.getMac_address();
-                    connectDevice(mac_ad);
-                }
-                else
-                {
-                    getPairedDevices();
-                }
-
-            }
-        });
 
         linear_l_c.setOnClickListener(v -> {
 
@@ -808,54 +783,48 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         });
 
 
-        linear_s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        linear_s.setOnClickListener(v -> {
 
 
-                Bo = text_b.getText().toString().trim();
-                Pr = text_prize.getText().toString().trim();
+            Bo = text_b.getText().toString().trim();
+            Pr = text_prize.getText().toString().trim();
 
 
-                if (!validation.isEmpty(Bo)) {
-                    bo = true;
-                    text_b.setError(null);
+            if (!validation.isEmpty(Bo)) {
+                bo = true;
+                text_b.setError(null);
 
-                } else {
-                    bo = false;
-                    text_b.setError("Enter Your Box!");
-                    text_b.setAnimation(animShake);
-                    text_b.startAnimation(animShake);
-                    vib.vibrate(120);
-                }
+            } else {
+                bo = false;
+                text_b.setError("Enter Your Box!");
+                text_b.setAnimation(animShake);
+                text_b.startAnimation(animShake);
+                vib.vibrate(120);
+            }
 
-                if (!validation.isEmpty(Pr)) {
-                    pr = true;
-                    text_prize.setError(null);
+            if (!validation.isEmpty(Pr)) {
+                pr = true;
+                text_prize.setError(null);
 
-                } else {
-                    pr = false;
-                    text_prize.setError("Enter Box !!");
-                    text_prize.setAnimation(animShake);
-                    text_prize.startAnimation(animShake);
-                    vib.vibrate(120);
-                }
-
-
-                if (bo && pr) {
-
-                 //   linear_submit.setVisibility(View.GONE);
-                    linear_new_submit.setVisibility(View.GONE);
-                    linear_relative.setVisibility(View.GONE);
-
-                    Countable();
-                } else {
-
-                    Toast.makeText(NavigationActivity.this, "Select the Category ,Product", Toast.LENGTH_SHORT).show();
-
-                }
+            } else {
+                pr = false;
+                text_prize.setError("Enter Box !!");
+                text_prize.setAnimation(animShake);
+                text_prize.startAnimation(animShake);
+                vib.vibrate(120);
+            }
 
 
+            if (bo && pr) {
+
+             //   linear_submit.setVisibility(View.GONE);
+                linear_new_submit.setVisibility(View.GONE);
+                linear_relative.setVisibility(View.GONE);
+
+                Countable();
+            } else {
+
+                Toast.makeText(NavigationActivity.this, "Select the Category ,Product", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -866,8 +835,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
             boolean status = preferences.getBoolean("status", false);
             SharedPreferences.Editor editor = preferences.edit();
 
-            databaseHelper.deleteAllRecord();
-
             if (status)
             {
 
@@ -876,6 +843,13 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
                     Box = text_box.getText().toString().trim();
                     Prize = text_p.getText().toString().trim();
+
+                    if (Prize.equalsIgnoreCase("000.000"))
+                    {
+                        vib.vibrate(120);
+                        Toast.makeText(activity, "Weight data is zero", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
 
                     if (!validation.isEmpty(Box)) {
@@ -931,6 +905,14 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
                     Box = text_box.getText().toString().trim();
                     Prize = text_p.getText().toString().trim();
+
+
+                    if (Prize.equalsIgnoreCase("000.000"))
+                    {
+                        vib.vibrate(120);
+                        Toast.makeText(activity, "Weight data is zero", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
 
                     if (!validation.isEmpty(Box)) {
@@ -995,44 +977,76 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         edit_mobile.addTextChangedListener(mobileWatcher);
     }
 
+    private void executeBTOperations() {
+
+            progressDialog.show();
+
+            boolean pair = checkDeviceConnected();
+
+            if (pair)
+            {
+                String mac_ad = session.getMac_address();
+                connectDevice(mac_ad);
+            }
+            else
+            {
+                getPairedDevices();
+            }
+
+
+
+    }
+
+    private boolean checkBTAvailability() {
+
+            bluetoothManager = BluetoothManager.getInstance();
+            if (bluetoothManager == null) {
+
+                finish();
+
+                return false;
+            } else
+            {
+                return true;
+            }
+
+    }
+
     private void requestPayment() {
 
             String reference = random();
             String cus_desc = "Luggage Payment";
 
-            mno_radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    SharedPreferences preferences = getSharedPreferences("customer", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
+            mno_radio.setOnCheckedChangeListener((group, checkedId) -> {
+                SharedPreferences preferences = getSharedPreferences("customer", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
 
-                    switch (checkedId)
-                    {
-                        case R.id.mtn_radio :
+                switch (checkedId)
+                {
+                    case R.id.mtn_radio :
+                        editor.putString("mno", "MTN");
+                        editor.commit();
+                        break;
+
+                    case R.id.airtel_radio :
+                        editor.putString("mno", "Airtel");
+                        editor.commit();
+                        break;
+
+                    case R.id.tigo_radio :
+                        editor.putString("mno", "Tigo");
+                        editor.commit();
+                        break;
+
+                    case R.id.vodafone_radio :
+                        editor.putString("mno", "Vodafone");
+                        editor.commit();
+                        break;
+
+                        default:
                             editor.putString("mno", "MTN");
                             editor.commit();
                             break;
-
-                        case R.id.airtel_radio :
-                            editor.putString("mno", "Airtel");
-                            editor.commit();
-                            break;
-
-                        case R.id.tigo_radio :
-                            editor.putString("mno", "Tigo");
-                            editor.commit();
-                            break;
-
-                        case R.id.vodafone_radio :
-                            editor.putString("mno", "Vodafone");
-                            editor.commit();
-                            break;
-
-                            default:
-                                editor.putString("mno", "MTN");
-                                editor.commit();
-                                break;
-                    }
                 }
             });
 
@@ -1143,48 +1157,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
 
 
-
-        /*Retrofit retrofit = RetrofitClient.getRetrofit();
-        Api api = retrofit.create(Api.class);*/
-
-
-
-        /*compositeDisposable.add(api.sendRequest(jsonObject.toString())
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<RequestResponse>() {
-            @Override
-            public void accept(RequestResponse requestResponse) throws Exception {
-
-                progressDialog.dismiss();
-
-                try {
-                    if (requestResponse.getCode() == 411)
-                    {
-                        //SUCCESS
-                        Toast.makeText(activity, "success", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (requestResponse.getCode() == 400)
-                    {
-                        //Error on Transactional details
-                        Toast.makeText(activity, "Error on Transactional details", Toast.LENGTH_SHORT).show();
-                    }
-
-                    else
-                    {
-                        //response body error
-                        Toast.makeText(activity, "response body error", Toast.LENGTH_SHORT).show();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(activity, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        }));
-*/
-
-
     }
 
     private void createErrorAlert(String message) {
@@ -1192,11 +1164,8 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Error");
         builder.setMessage(message);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setPositiveButton("OK", (dialog, which) -> {
 
-            }
         });
         builder.create();
         builder.show();
@@ -1207,16 +1176,13 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Amount - ₵ "+ amount);
         builder.setMessage("ZeePay ID :  "+zee_id+"\n"+message);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                    if (zee_pay_id.getVisibility() == View.GONE)
-                    {
-                        zee_pay_id.setVisibility(View.VISIBLE);
-                    }
+        builder.setPositiveButton("OK", (dialog, which) -> {
+                if (zee_pay_id.getVisibility() == View.GONE)
+                {
+                    zee_pay_id.setVisibility(View.VISIBLE);
+                }
 
-                    zee_pay_text.setText(zee_id);
-            }
+                zee_pay_text.setText(zee_id);
         });
         builder.create();
         builder.show();
@@ -1319,9 +1285,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
             }
         }
 
-        /*SharedPreferences preferences = getSharedPreferences("BLUETOOTH", MODE_PRIVATE);
-
-        String mac_add = preferences.getString("MAC_ADDRESS", "some_text");*/
 
         String mac_add = session.getMac_address();
 
@@ -1372,13 +1335,7 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
             pairedList.setAdapter(arrayAdapter);
 
             pairedList.setOnItemClickListener((parent, view, position, id) -> {
-/*
 
-                SharedPreferences preferences = getSharedPreferences("BLUETOOTH", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("MAC_ADDRESS", mac[position]);
-                editor.commit();
-*/
 
                 session.setMac_address(mac[position]);
 
@@ -1405,6 +1362,7 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
     @SuppressLint("CheckResult")
     private void connectDevice(String s) {
 
+
         bluetoothManager.openSerialDevice(s)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -1420,9 +1378,11 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         if (progressDialog.isShowing())
             progressDialog.dismiss();
 
-        // Let's send a message:
-        //deviceInterface.sendMessage("Hello world!");
     }
+
+
+    int receiveCount = 0;
+    int errorCount = 0;
 
     private void onMessageSent(String message) {
         // We sent a message! Handle it here.
@@ -1431,14 +1391,38 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
     private void onMessageReceived(String s) {
 
+        if (progressDialog.isShowing())
+            progressDialog.dismiss();
+
+        receiveCount++;
+
+        if (receiveCount>10)
+        {
+            bluetoothManager.close();
+            receiveCount = 0;
+        }
+
+        if (button_weight.getText().toString().equalsIgnoreCase("get"))
+        {
+            button_weight.setText("UPDATE");
+            Toast.makeText(activity, "Bluetooth device connection successful", Toast.LENGTH_SHORT).show();
+        }
+
         /*Toast.makeText(activity, ""+s, Toast.LENGTH_SHORT).show();*/
         text_p.setText(s);
     }
 
     private void onError(Throwable error) {
-        progressDialog.dismiss();
-        Log.d("BT:onError ->", error.getMessage());
+        if (progressDialog.isShowing())
+            progressDialog.dismiss();
+
+        MLog.e("BT:onError ->", error.getMessage());
+
+     bluetoothManager.close();
+
         Toast.makeText(activity, "Bluetooth device connection failed, Please check the connection and try again", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(activity, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+
     }
 
     private void enableBT() {
@@ -1457,19 +1441,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         }
 
     }
-
-    private void checkBTAvailability() {
-
-        bluetoothManager = BluetoothManager.getInstance();
-        if (bluetoothManager == null) {
-            // Bluetooth unavailable on this device :( tell the user
-            Toast.makeText(this, "Bluetooth not available.", Toast.LENGTH_LONG).show(); // Replace context with your context instance.
-            finish();
-
-        }
-
-    }
-
 
 
     TextWatcher textWatcher = new TextWatcher() {
@@ -3092,7 +3063,7 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
                 } else {
 
-
+                    databaseHelper.deleteAllRecord();
                     count_list = databaseHelper.getAllNotes();
                     linear_l_w.setVisibility(View.VISIBLE);
                     linear_w.setVisibility(View.GONE);

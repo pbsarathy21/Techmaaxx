@@ -136,7 +136,6 @@ public class PrinterHelper {
                         mIzkcService.printBitmapAlgin(bit, 376, 120, 0);
                     }
 
-                    mIzkcService.printGBKText("" + "\n");
                     mIzkcService.printTextAlgin(centerAlign(session.getCompany_Name()), 0, 1, 18);
                     mIzkcService.printGBKText("" + "\n");
                     mIzkcService.printGBKText(centerAlign(session.getCompany_add1()) + "\n");
@@ -160,6 +159,8 @@ public class PrinterHelper {
                     mIzkcService.printGBKText(mIzkcService_CUT_OFF_RULE);
                     mIzkcService.printGBKText("" + "\n");
                     mIzkcService.printTextAlgin(centerAlign("Thank you"), 0, 1, 18);
+                    mIzkcService.printGBKText("" + "\n");
+                    mIzkcService.printGBKText(mIzkcService_CUT_OFF_RULE);
 
                  /*   if (session.getPower_text().equalsIgnoreCase("")) {
                         mIzkcService.printTextAlgin("           " + "Thank You", 0, 1, 18);
@@ -209,7 +210,6 @@ public class PrinterHelper {
                         mIzkcService.printBitmapAlgin(bit, 376, 120, 0);
                     }
 
-                    mIzkcService.printGBKText("" + "\n");
                     mIzkcService.printTextAlgin(centerAlign(session.getCompany_Name()), 0, 1, 18);
                     mIzkcService.printGBKText("" + "\n");
                     mIzkcService.printGBKText(centerAlign(session.getCompany_add1())+ "\n");
@@ -267,7 +267,7 @@ public class PrinterHelper {
                         mIzkcService.printGBKText("           " + "" + "\n");
                         mIzkcService.printGBKText("           " + "" + "\n");
                     }
-*/
+*/                  databaseHelper.deleteAllRecord();
                     session.setName("");
                     session.setU_Mobile("");
                     session.setFleet("");
@@ -288,7 +288,7 @@ public class PrinterHelper {
                     count_list.clear();
                     session.setCount_Prize("");
                     count_list.size();
-                    databaseHelper.deleteAllRecord();
+
 
                 }
 
@@ -303,7 +303,6 @@ public class PrinterHelper {
                 }*/
 
                 else {
-                    mIzkcService.printGBKText("" + "\n");
                     mIzkcService.printTextAlgin(centerAlign("REPORT"), 0, 1, 18);
                     mIzkcService.printGBKText("" + "\n");
                     mIzkcService.printGBKText("" + "\n");
