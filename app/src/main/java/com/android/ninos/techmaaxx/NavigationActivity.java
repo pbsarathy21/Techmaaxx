@@ -146,8 +146,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         super.onStart();
     }
 
-
-
     //BT Modification starts
 
     ImageView bt_connected, bt_disconnected;
@@ -174,7 +172,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
     CustomTextViewBold sender_value, amount_value, status_value;
     Button accept_button, cancel_button;
-
 
     ListView navDrawerList;
     List<NavigationList> drawerItems;
@@ -278,7 +275,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
     private Vibrator vib;
     Animation animShake;
 
-
     Activity activity;
     Context context;
     Session session;
@@ -365,8 +361,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
         //BT Modification ends
 
-
-
         accept_button = findViewById(R.id.accept_button);
         cancel_button = findViewById(R.id.cancel_button);
 
@@ -376,17 +370,27 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         validation = new Validation();
         session = new Session(this);
 
+        if (zee_pay_id.getVisibility() == View.VISIBLE)
+            zee_pay_id.setVisibility(View.GONE);
+
 
         request_button.setOnClickListener(v -> {
 
-            if (text_p.getText().toString().equalsIgnoreCase("000.000"))
+            if (linear_weight.getVisibility()==View.VISIBLE)
             {
-                vib.vibrate(500);
-                Toast.makeText(activity, "Weight data is zero", Toast.LENGTH_SHORT).show();
-            } else
-            {
-                requestPayment();
+                if (text_p.getText().toString().equalsIgnoreCase("000.000"))
+                {
+                    vib.vibrate(500);
+                    Toast.makeText(activity, "Weight data is zero", Toast.LENGTH_SHORT).show();
+                } else
+                {
+                    requestPayment();
+                }
+
             }
+
+            requestPayment();
+
 
             //bluetoothManager.close();
 
@@ -502,19 +506,9 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                 builder.setMessage("Your current progress will be resetted");
                 builder.setIcon(android.R.drawable.ic_dialog_alert);
 
-                builder.setPositiveButton("Edit Anyway", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Edit Anyway", (dialog, which) -> Get_Destination());
 
-                    public void onClick(DialogInterface dialog, int which) {
-                        Get_Destination();
-                    }
-                });
-
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+                builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
                 builder.setOnCancelListener(null);
                 builder.show();
             }
@@ -526,13 +520,11 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
         });
 
-
         edit_name.setText(session.getName());
         edit_mobile.setText(session.getU_Mobile());
         edit_fleet_no.setText(session.getFleet());
         orgin_value.setText(session.getOrgin_value());
         Destination_value.setText(session.getDes_value());
-
 
         //Count
 
@@ -698,9 +690,7 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
         });
 
-
         linear_l_c.setOnClickListener(v -> {
-
 
             Name = edit_name.getText().toString();
             Mobile = edit_mobile.getText().toString();
@@ -711,7 +701,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
             editor.putString("name", Name);
             editor.putString("msidn", Mobile);
             editor.commit();
-
 
             if (!validation.isEmpty(Name)) {
                 name = true;
@@ -724,7 +713,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                 edit_name.startAnimation(animShake);
                 vib.vibrate(120);
             }
-
 
             if (validation.isValidPassword(Mobile)) {
 
@@ -774,21 +762,15 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                     Toast.makeText(NavigationActivity.this, "Select the Orgin ,Destination", Toast.LENGTH_SHORT).show();
                 }
 
-
             } else {
 
             }
-
-
         });
-
 
         linear_s.setOnClickListener(v -> {
 
-
             Bo = text_b.getText().toString().trim();
             Pr = text_prize.getText().toString().trim();
-
 
             if (!validation.isEmpty(Bo)) {
                 bo = true;
@@ -814,9 +796,7 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                 vib.vibrate(120);
             }
 
-
             if (bo && pr) {
-
              //   linear_submit.setVisibility(View.GONE);
                 linear_new_submit.setVisibility(View.GONE);
                 linear_relative.setVisibility(View.GONE);
@@ -830,14 +810,12 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
 
         linear_submit.setOnClickListener(v -> {
-
             SharedPreferences preferences = getSharedPreferences("customer", MODE_PRIVATE);
             boolean status = preferences.getBoolean("status", false);
             SharedPreferences.Editor editor = preferences.edit();
 
             if (status)
             {
-
                 editor.putBoolean("status", false).commit();
                 if (Consts.Method.equalsIgnoreCase("weighable")) {
 
@@ -850,7 +828,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                         Toast.makeText(activity, "Weight data is zero", Toast.LENGTH_SHORT).show();
                         return;
                     }
-
 
                     if (!validation.isEmpty(Box)) {
                         box = true;
@@ -881,7 +858,6 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                         session.setBox(Box);
                         session.setW_Weight(Prize);
                         PrintPopUp();
-
 
                     } else {
 
@@ -1257,11 +1233,16 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                 case R.id.cash_radio :
                 if (mobile_layout.getVisibility() == View.VISIBLE)
                     mobile_layout.setVisibility(View.GONE);
+                if (zee_pay_id.getVisibility() == View.VISIBLE)
+                    zee_pay_id.setVisibility(View.GONE);
                 session.setPayment_mode("Cash");
                 break;
 
                 case R.id.mobile_radio :
-                    mobile_layout.setVisibility(View.VISIBLE);
+                    if (zee_pay_id.getVisibility() == View.GONE)
+                        zee_pay_id.setVisibility(View.VISIBLE);
+                    if (mobile_layout.getVisibility() == View.GONE)
+                        mobile_layout.setVisibility(View.VISIBLE);
                     session.setPayment_mode("Mobile Money");
                     break;
             }
@@ -3626,14 +3607,14 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         View content = inflater.inflate(R.layout.product_dialog, null);
         builder.setView(content);
 
-        dialog_linear = (LinearLayout) content.findViewById(R.id.dialog_linear);
+        dialog_linear = content.findViewById(R.id.dialog_linear);
         // dialog_linear.getBackground().setAlpha(150);
 
-        sub_title = (CustomTextViewBold) content.findViewById(R.id.sub_title);
+        sub_title = content.findViewById(R.id.sub_title);
 
         //  Util.setFont(3, context, sub_title, "Select Your Preferred Language");
 
-        close_icon = (ImageView) content.findViewById(R.id.close_icon);
+        close_icon = content.findViewById(R.id.close_icon);
 
         //recyclerview
         pro_recyclerview = (RecyclerView) content.findViewById(R.id.pro_recyclerview);
@@ -3672,18 +3653,9 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         //  getSelectedData();
 
 
-        close_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-        linear_re.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
+        close_icon.setOnClickListener(v -> alertDialog.dismiss());
+
+        linear_re.setOnClickListener(v -> alertDialog.dismiss());
 
     }
 
@@ -3696,19 +3668,15 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         builder.setMessage("Do you want to close the Application?");
         builder.setIcon(android.R.drawable.ic_dialog_alert);
 
-        builder.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Exit", (dialog, which) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-            @SuppressLint("ObsoleteSdkInt")
-            public void onClick(DialogInterface dialog, int which) {
-                if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-                    MLog.e("ok", "ok");
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        finishAffinity();
-                    }
-                    NavigationActivity.this.finish();
-                    System.exit(0);
+                MLog.e("ok", "ok");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    finishAffinity();
                 }
+                NavigationActivity.this.finish();
+                System.exit(0);
             }
         });
 
@@ -3759,6 +3727,4 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
         return true;
     }
-
-
 }

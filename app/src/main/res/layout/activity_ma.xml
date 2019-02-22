@@ -1087,7 +1087,7 @@
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <com.android.ninos.techmaaxx.Utils.CustomTextviewRegular
                         android:layout_width="wrap_content"
