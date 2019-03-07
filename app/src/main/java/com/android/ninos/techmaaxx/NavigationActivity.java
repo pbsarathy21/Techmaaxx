@@ -1424,7 +1424,7 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
     }
 
 
-    TextWatcher textWatcher = new TextWatcher() {
+        TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
