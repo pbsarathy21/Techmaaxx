@@ -370,6 +370,8 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         validation = new Validation();
         session = new Session(this);
 
+        session.setPayment_mode("Cash");
+
         if (zee_pay_id.getVisibility() == View.VISIBLE)
             zee_pay_id.setVisibility(View.GONE);
 
@@ -1485,8 +1487,10 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                 Log.e("currency", "Currecncy==>" + yourFormattedString);
 
 
-                text_total.setText(yourFormattedString);
-                session.setWeighable_total(yourFormattedString);
+                //text_total.setText(yourFormattedString);
+                text_total.setText(total_amt);
+                //session.setWeighable_total(yourFormattedString);
+                session.setWeighable_total(total_amt);
 
             } else {
 

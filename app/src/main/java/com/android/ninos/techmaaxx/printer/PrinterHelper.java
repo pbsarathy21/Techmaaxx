@@ -155,7 +155,7 @@ public class PrinterHelper {
                     mIzkcService.printGBKText(mIzkcService_CUT_OFF_RULE);
                     mIzkcService.printGBKText("Payment mode" + "      " + session.getPayment_mode() + "\n");
                     mIzkcService.printGBKText(mIzkcService_CUT_OFF_RULE);
-                    mIzkcService.printGBKText(PrintTag.PurchaseBillTag.TOTAL + "             " + session.getCurrency_Symbol() + " " + session.getWeighable_total() + ".00" + "\n");
+                    mIzkcService.printGBKText(PrintTag.PurchaseBillTag.TOTAL + "             " + session.getCurrency_Symbol() + " " + session.getWeighable_total() + "\n");
                     mIzkcService.printGBKText(mIzkcService_CUT_OFF_RULE);
                     mIzkcService.printGBKText("" + "\n");
                     mIzkcService.printTextAlgin(centerAlign("Thank you"), 0, 1, 18);

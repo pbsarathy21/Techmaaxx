@@ -40,7 +40,6 @@ public class Consts {
 
     public static String orgin_value = "false";
 
-
     public static String Des_value = "false";
 
     public static String Cat_value = "false";
