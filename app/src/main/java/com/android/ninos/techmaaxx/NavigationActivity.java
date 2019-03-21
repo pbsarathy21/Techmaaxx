@@ -456,6 +456,8 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
         status_button.setOnClickListener(v -> startPaymentVerification());
 
+        session.setOrgin("");
+
         initViews();
 
         radioGroupListener();
@@ -1833,6 +1835,15 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
                                 list.add(obj_orgin.get(arrIndx).title);
                                 Log.e(TAG, "Brand_name:==>" + obj_orgin.get(arrIndx).title);
 
+                            }
+
+                            // parthasarathy modification
+
+                            if (obj_orgin.size() == 1)
+                            {
+                                orgin_value.setText(obj_orgin.get(0).title);
+                                orgin_value.setClickable(false);
+                                session.setOrgin(obj_orgin.get(0).id);
                             }
 
 
