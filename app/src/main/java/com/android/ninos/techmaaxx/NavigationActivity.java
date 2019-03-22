@@ -456,7 +456,7 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
 
         status_button.setOnClickListener(v -> startPaymentVerification());
 
-        session.setOrgin("");
+      //  session.setOrgin("");
 
         initViews();
 
