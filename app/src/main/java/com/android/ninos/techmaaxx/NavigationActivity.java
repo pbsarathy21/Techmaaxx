@@ -3294,9 +3294,9 @@ public class NavigationActivity extends BaseActivity implements NavigationView.O
         commonRequest.price = tot_amt_countable;
         commonRequest.payment_mode = session.getPayment_mode();
 
-        MLog.e(TAG, "post_values:==>" + "iser_id==>" + commonRequest.user_id + "\nmethod==>" + commonRequest.method + "\nname==>" + commonRequest.name + "\nphone==>" + commonRequest.phone +
+        MLog.e(TAG, "post_values:==>" + "user_id==>" + commonRequest.user_id + "\nmethod==>" + commonRequest.method + "\nname==>" + commonRequest.name + "\nphone==>" + commonRequest.phone +
                 "\nfleetNo==>" + commonRequest.fleetno + "\norigin_id==>" + commonRequest.origin_id + "\ndestination_id==>" + commonRequest.destination_id + "\ncount==>" + commonRequest.count +
-                "\nweight==>" + commonRequest.count + "\ntotal_amopunr==>" + commonRequest.price);
+                "\nweight==>" + commonRequest.count + "\ntotal_amopunr==>" + commonRequest.price+"\ncategory_id==>" + commonRequest.category_id + "\nproduct_id==>" + commonRequest.product_id+ "\npayment_mode==>" + commonRequest.payment_mode);
 
 
         Category = text_cat.getText().toString().trim();
